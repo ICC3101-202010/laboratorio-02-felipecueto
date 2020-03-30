@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace Laboratorio2
 {
   
@@ -16,7 +18,8 @@ namespace Laboratorio2
                 Console.WriteLine("Seleccione una opción por favor\n");
                 Console.WriteLine("(1)-Ver canciones Agregadas");
                 Console.WriteLine("(2)-Agregar nueva cancion");
-                Console.WriteLine("(3)-Salir");
+                Console.WriteLine("(3)-Ver cancion por criterio");
+                Console.WriteLine("(4)-Salir");
                 int opcion = Convert.ToInt32(Console.ReadLine());
                 switch (opcion)
                 {
@@ -56,8 +59,51 @@ namespace Laboratorio2
                         Console.Clear();
 
                         break;
-                   
+
                     case 3:
+                        bool seleccionandoCriterio = true;
+                        string[] criterios = { "Album", "Artista", "Genero" };
+                        while (seleccionandoCriterio)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Seleccionar criterio");
+                            Console.WriteLine("(1) - Album");
+                            Console.WriteLine("(2) - Artista");
+                            Console.WriteLine("(3) - Genero");
+
+                            int criterio = Convert.ToInt32(Console.ReadLine());
+                            if (criterio < 1 || criterio > 3)
+                            {
+                                Console.WriteLine("Porfavor elige una opción valida...");
+                                System.Threading.Thread.Sleep(2000);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Seleccionar valor");
+                                string valor = Console.ReadLine();
+                                List<Cancion> cancionesPorCriterio = espotifai.CancionesPorCriterio(criterios[criterio - 1], valor);
+
+                                bool isEmpty = !cancionesPorCriterio.Any();
+                                if (isEmpty)
+                                {
+                                    Console.WriteLine("\n No exite ninguna cancion con este criterio");
+                                }
+                                else
+                                {
+                                    foreach (Cancion cancion in cancionesPorCriterio)
+                                    {
+                                        Console.WriteLine(cancion.Informacion());
+                                    }
+                                }
+                                seleccionandoCriterio = false;
+                                Console.WriteLine("\n Presione cualquier tecla para continuar...");
+                                Console.ReadLine();
+                            }
+                        }
+                        break;
+
+
+                    case 4:
                         Console.Clear();
                         Console.WriteLine("Cerrando Programa");
                         loop = false;

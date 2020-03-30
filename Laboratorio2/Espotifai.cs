@@ -34,5 +34,42 @@ namespace Laboratorio2
                 Console.WriteLine(song.Informacion());
             }
         }
+
+        public List<Cancion> CancionesPorCriterio(String criterio, String valor)
+        {
+            List<Cancion> cancionesEnCriterio = new List<Cancion>();
+
+            foreach (Cancion song in Songs)
+            {
+                switch (criterio)
+                {
+                    case "Album":
+                        if (song.Album == valor)
+                        {
+                            cancionesEnCriterio.Add(song);
+                        }
+                        break;
+                    case "Artista":
+                        if (song.Artist == valor)
+                        {
+                            cancionesEnCriterio.Add(song);
+                        }
+                        break;
+                    case "Genero":
+                        if (song.Gender == valor)
+                        {
+                            cancionesEnCriterio.Add(song);
+                        }
+
+                        break;
+
+                    default:
+
+                        return cancionesEnCriterio;
+                }
+            }
+
+            return cancionesEnCriterio;
+        }
     }
 }
