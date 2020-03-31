@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace Laboratorio2
 {
-    public class Playlist
+    public class PlayList
     {
         private string name;
         List<Cancion> songs;
 
-        public Playlist(string name, List<Cancion> songs)
+        public PlayList(string name, List<Cancion> songs)
         {
             this.name = name;
             this.songs = songs;

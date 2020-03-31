@@ -106,12 +106,42 @@ namespace Laboratorio2
                         break;
 
                     case 4:
-                        Console.Clear();
+                        bool seleccionandoCriterio_playlist = true;
+                        string[] criterios_playlist = { "Album", "Artista", "Genero" };
+                        while (seleccionandoCriterio_playlist)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Introduca el nombre playlist que quiere crear:\n");
+                            string nombrePlaylist = Console.ReadLine();
+                            Console.WriteLine("\n Seleccionar criterio");
+                            Console.WriteLine("(1) - Album");
+                            Console.WriteLine("(2) - Artista");
+                            Console.WriteLine("(3) - Genero");
+
+                            int criterio_playlist = Convert.ToInt32(Console.ReadLine());
+                            if (criterio_playlist < 1 || criterio_playlist > 3)
+                            {
+                                Console.WriteLine("Porfavor elige una opción valida...");
+                                System.Threading.Thread.Sleep(2000);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Seleccionar valor");
+                                string valor = Console.ReadLine();
+                                espotifai.GenerarPlaylist(criterios_playlist[criterio_playlist - 1], valor, nombrePlaylist);
+                                seleccionandoCriterio_playlist = false;
+                                Console.WriteLine("\n Presione cualquier tecla para continuar...");
+                                Console.ReadLine();
+                            }
+                        }
+
+
                         break;
 
                     case 5:
+
                         Console.Clear();
-                        Console.
+                        Console.WriteLine(espotifai.VerMisPlaylists());
                         Console.WriteLine("\n Presione cualquier tecla para continuar...");
                         Console.ReadLine();
                         break;
