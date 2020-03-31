@@ -19,7 +19,10 @@ namespace Laboratorio2
                 Console.WriteLine("(1)-Ver canciones Agregadas");
                 Console.WriteLine("(2)-Agregar nueva cancion");
                 Console.WriteLine("(3)-Ver cancion por criterio");
-                Console.WriteLine("(4)-Salir");
+                Console.WriteLine("(4)-Crear Playlist por criterio");
+                Console.WriteLine("(5)-Ver mis Playlits");
+                Console.WriteLine("(6)-Salir");
+
                 int opcion = Convert.ToInt32(Console.ReadLine());
                 switch (opcion)
                 {
@@ -102,8 +105,17 @@ namespace Laboratorio2
                         }
                         break;
 
-
                     case 4:
+                        Console.Clear();
+                        break;
+
+                    case 5:
+                        Console.Clear();
+
+                        break;
+                   
+
+                    case 6:
                         Console.Clear();
                         Console.WriteLine("Cerrando Programa");
                         loop = false;
