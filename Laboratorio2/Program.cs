@@ -111,7 +111,9 @@ namespace Laboratorio2
 
                     case 5:
                         Console.Clear();
-
+                        Console.
+                        Console.WriteLine("\n Presione cualquier tecla para continuar...");
+                        Console.ReadLine();
                         break;
                    
 
